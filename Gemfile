@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
+gem 'mongoid'
+gem 'rspec-rails', :group => [:development, :test]
+gem 'database_cleaner', :group => :test
+gem 'factory_girl_rails', :group => :test
+gem 'mongoid-rspec', :group => :test
+gem 'bson_ext'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
