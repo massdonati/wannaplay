@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.6'
 gem 'mongoid'
+gem 'bootstrap-sass'
 gem 'rspec-rails', :group => [:development, :test]
 gem 'database_cleaner', :group => :test
 gem 'factory_girl_rails', :group => :test
