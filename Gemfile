@@ -8,10 +8,14 @@ gem 'database_cleaner', :group => :test
 gem 'factory_girl_rails', :group => :test
 gem 'mongoid-rspec', :group => :test
 gem 'bson_ext'
-
+gem 'haml-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+group :development do
+  gem 'hpricot'
+  gem 'ruby_parser'
+end
 
 
 # Gems used only for assets and not required
@@ -27,6 +31,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'simple_form'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

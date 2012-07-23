@@ -1,0 +1,19 @@
+= link_to 'Add a Match', new_game_path, :class=>"btn btn-primary btn-large"
+%h1 Games List
+#row
+  #span12
+    %table{:class => "table table-striped"}
+      %thead
+        %tr
+          %th #
+          %th Sport
+          %th Date
+          %th location
+      %tbody
+      - @games.each do |g|
+        %tr
+          %th= g.id 
+          %th= g.sport
+          %th= g.date
+          %th= g.location
+

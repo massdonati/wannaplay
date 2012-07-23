@@ -1,0 +1,14 @@
+- if @game.errors.any?
+  .row-fluid
+    #alert.alert.alert-block
+      %a#close.close{"data-dismiss" => "alert"} ×
+      %h4.alert-heading Worning!
+      %ul
+        - @game.errors.full_messages.each do |msg|
+          %li= msg
+= simple_form_for @game, :html => { :class => 'well' } do |f|
+  = f.input :sport, :input_html => { :class => 'span4', :placeholder => "Write the sport you wanna play"}
+  = f.input :date, :input_html => { :type=>'datetime'}
+  = f.input :location, :input_html => { :class => 'span4', :placeholder => "Write the sport you wanna play"}
+  .download-info
+    = f.button :submit, :class => "btn btn-large", :value => 'Submit'
