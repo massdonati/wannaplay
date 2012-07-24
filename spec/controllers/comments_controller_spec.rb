@@ -8,15 +8,6 @@ describe CommentsController do
     }
   end
 
-
-  describe "GET show" do
-    it "assigns the requested comment as @comment" do
-      comment = Comment.create! valid_attributes
-      get :show, {:id => comment.to_param}
-      assigns(:comment).should eq(comment)
-    end
-  end
-
   describe "GET new" do
     it "assigns a new comment as @comment" do
       @game_test= Game.create(:sport=> "Calcetto")

@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
   def create
 
     @commentable = find_commentable
-    @comment = @commentable.comments.new(params[:comment])
+    @comment = @commentable.comments.create(params[:comment])
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @commentable, notice: 'Comment was successfully created.' }

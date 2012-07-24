@@ -1,57 +1,48 @@
 .row-fluid
   .span4
-    = image_tag("avatar.jpg")
+    = image_tag("center_ball.jpg")
+    
     .btn-group
-      %button.btn.dropdown-toggle{"data-toggle" => "dropdown"}
-        Settings...
-        %span.caret
-      %ul.dropdown-menu
+      %button.btn= link_to 'Edit Details', edit_game_path(@game)
+      %button.btn= link_to 'Delete Game', @game, confirm: 'Are you sure you want to delete this game?', method: :delete
+  .span8 
+    .tabbable
+      %ul.nav.nav-tabs
+        %li.active
+          %a{"data-toggle" => "tab", :href => "#tab1"} Details
         %li
-          = link_to 'Edit', edit_game_path(@game)
-        %li.divider
-        %li
-          = link_to 'Delete', @game, confirm: 'Are you sure you want to delete this game?', method: :delete
-  .span8
-    %h4 Massimo Donati
-    Sviluppatore iOS
-    %p
-      %b Title:
-      = @question.title
-    %b Detail:
-    = @question.detail
+          %a{"data-toggle" => "tab", :href => "#tab2"} Players
+      .tab-content
+        #tab1.tab-pane.active
+          %h3 Details 
+          %p
+            %b Sport:
+            = @game.sport
+          %p
+            %b Date:
+            = @game.date
+          %p 
+            %b Location:
+            = @game.location
+        #tab2.tab-pane
+          %p Howdy, I'm in Section 2.     
   .row-fluid
     .span12
       %p
       %h6
-        = time_ago_in_words @question.created_at
-        ago | #{@answer.comments.length} commenti
+        = time_ago_in_words @game.created_at
+        ago | #{@game.comments.length} comments
 #accordion2.accordion
   .accordion-group
     .accordion-heading
-      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseOne"} Commenta Domanda
+      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseOne"} Write a comment
     #collapseOne.accordion-body.collapse{:style => "height: 0px;"}
       .accordion-inner
-        = simple_form_for Comment.new, :html => { :class => 'well' } do |f|
-          = hidden_field_tag :question_id, @question.id
-          = f.input :content, :input_html => { :id=>'textarea', :rows => '3',:class => 'span12', :placeholder => 'Scrivi qui il tuo commento.'}
-          = f.button :submit, :class => "btn btn-large", :value => 'Commenta'
-  .accordion-group
-    .accordion-heading
-      %a.accordion-toggle{"data-parent" => "#accordion2", "data-toggle" => "collapse", :href => "#collapseTwo"} Visualizza Commenti
-    #collapseTwo.accordion-body.collapse{:style => "height: 0px;"}
-      .accordion-inner
-        - @question.comments.desc(:created_at).each do |comment|
-          %p
-          %h5 Massimo Donati
-          = comment.content
-          %p
-          %h6= comment.created_at
-= simple_form_for @answer, :html => { :class => 'well' } do |f|
-  %h3 Rispondi alla domanda
-  = hidden_field_tag :question_id, @question.id
-  .row-fluid
-    = f.input :content, :input_html => {:class => 'span12',:rows => '3', |
-      :placeholder => 'Scrivi una risposta'}                             |
-    = f.button :submit, :class => 'btn btn-large', :value => 'Rispondi'
-%hr/
-
+        = render :partial => 'comments/form'
+%table{ :class => "table table-bordered"}
+  - @game.comments.desc(:created_at).each do |comment|
+    .well
+      %p
+      = comment.content
+      %p
+      %h6= comment.created_at

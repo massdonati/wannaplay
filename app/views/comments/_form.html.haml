@@ -1,0 +1,4 @@
+= simple_form_for Comment.new do |f|
+  = hidden_field_tag :game_id, @game.id
+  =f.input :content, :input_html => { :id=>'textarea', :rows => '3',:class => "span6", :placeholder => 'Write a comment'}
+  = f.button :submit, :class => "btn btn-large", :value => 'Submit'

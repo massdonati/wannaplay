@@ -32,12 +32,12 @@
       .row-fluid
         #alert.alert.alert-block
           %a#close.close{"data-dismiss" => "alert"} ×
-          %h4.alert-heading Attenzione!
+          %h4.alert-heading Worning!
           = flash[:alert]
     - if flash[:notice]
       #alert.alert.alert-success
         %a#close.close{"data-dismiss" => "alert"} ×
-        %h4.alert-heading Complimenti!
+        %h4.alert-heading Yeah!
         = flash[:notice]
     .container-fluid
       = yield

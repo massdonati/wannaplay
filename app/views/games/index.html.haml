@@ -5,17 +5,28 @@
 %h2 Games List
 #row
   #span12
-    %table{:class => "table table-striped"}
+    %table{:class => "table table-striped table-bordered table-condensed"}
       %thead
         %tr
           %th #
+          %th Players
           %th Sport
           %th Date
-          %th location
+          %th Location
+          %th Info
       %tbody
-      - @games.each_with_index do |game, index|
+      - @games.desc(:created_at).each_with_index do |game, index|
         %tr
           %th= index + 1 
-          %th= link_to game.sport, game
+          %th
+            - case game.players.count
+            - when 0..6
+              %span.badge.badge-important= game.players.count
+            - when 7..9
+              %span.badge.badge-warning= game.players.count
+            - when 10
+              %span.badge.badge-success= game.players.count
+          %th= game.sport
           %th= game.date
           %th= game.location
+          %th= link_to 'Info', game, :class=>"btn btn-info"
