@@ -1,5 +1,8 @@
+%p
+  .download-info
 = link_to 'Add a Match', new_game_path, :class=>"btn btn-primary btn-large"
-%h1 Games List
+%hr/
+%h2 Games List
 #row
   #span12
     %table{:class => "table table-striped"}
@@ -10,10 +13,9 @@
           %th Date
           %th location
       %tbody
-      - @games.each do |g|
+      - @games.each_with_index do |game, index|
         %tr
-          %th= g.id 
-          %th= g.sport
-          %th= g.date
-          %th= g.location
-
+          %th= index + 1 
+          %th= link_to game.sport, game
+          %th= game.date
+          %th= game.location

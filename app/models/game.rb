@@ -6,6 +6,6 @@ class Game
   field :date, :type => DateTime
   field :location, :type => String
 
-  has_many :players
-
+  has_and_belongs_to_many :players
+  has_many :comments, :as => :commentable 
 end

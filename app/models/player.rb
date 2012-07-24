@@ -5,6 +5,6 @@ class Player
   field :name, :type => String
   field :email, :type => String
   
-  belongs_to :game
+  has_and_belongs_to_many :game
 
 end

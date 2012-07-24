@@ -1,0 +1,102 @@
+<div class="row-fluid">
+	<div class="span4">
+		<%= image_tag("avatar.jpg")%>
+		<div class="btn-group">
+			<button class="btn dropdown-toggle" data-toggle="dropdown">
+				Opzioni...<span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu">
+				<li>
+					<%= link_to 'Modifica', edit_question_path(@question)%>
+				</li>
+				<li class="divider"></li>
+				<li>
+					<%= link_to 'Elimina', @question, confirm: 'Sei sicuro che vuoi eliminare questa domanda?', method: :delete %>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="span8">
+		<h4> Massimo Donati</h4>
+		Sviluppatore iOS
+		<p>
+			<b>Title:</b>
+			<%= @question.title %>
+		</p>
+		<b>Detail:</b>
+		<%= @question.detail %>
+	</div>
+	<div class="row-fluid">
+		<div class="span12">
+			<p>
+				<h6><%= time_ago_in_words @question.created_at%> ago | <%= @answer.comments.length%> commenti</h6>
+			</p>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+<div id="accordion2" class="accordion" >
+	<div class="accordion-group" >
+		<div class="accordion-heading" >
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">Commenta Domanda</a>
+		</div>
+		<div id="collapseOne" class="accordion-body collapse" style="height: 0px;" >
+			<div class="accordion-inner">
+				<%= simple_form_for Comment.new, :html => { :class => 'well' } do |f| %>
+				<%= hidden_field_tag :question_id, @question.id %>
+				<%= f.input :content, :input_html => { :id=>'textarea', :rows => '3',:class => 'span12', :placeholder => 'Scrivi qui il tuo commento.'} %>
+				<%= f.button :submit, :class => "btn btn-large", :value => 'Commenta'%>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	<div class="accordion-group" >
+		<div class="accordion-heading" >
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">Visualizza Commenti</a>
+		</div>
+		<div id="collapseTwo" class="accordion-body collapse" style="height: 0px;" >
+			<div class="accordion-inner">
+				<% @question.comments.desc(:created_at).each do |comment|%>
+				<p>
+					<h5>Massimo Donati</h5><%= comment.content%>
+				</p>
+				<p>
+					<h6><%= comment.created_at %></h6>
+				</p>
+				<%end%>
+			</div>
+		</div>
+	</div>
+</div>
+<%= simple_form_for @answer, :html => { :class => 'well' } do |f| %> <h3>Rispondi alla domanda</h3>
+<%= hidden_field_tag :question_id, @question.id %>
+<div class="row-fluid">
+	<%= f.input :content, :input_html => {:class => 'span12',:rows => '3',
+    :placeholder => 'Scrivi una risposta'} %>
+	<%= f.button :submit, :class => 'btn btn-large', :value => 'Rispondi' %>
+</div>
+<% end %>
+<hr />
+<h2>Risposte Inserite</h2>
+<% @question.answers.desc(:created_at).each do |answer| %>
+<div class="well">
+	<div class="row-fluid">
+		<div class="span4">
+			<%= image_tag("avatar.jpg")%>
+		</div>
+		<div class="span8">
+			<h4> Massimo Donati</h4>
+			Sviluppatore iOS <b>Risposta:</b>
+			<%= link_to answer.content.truncate(100), answer %>
+		</div>
+		<div class="row-fluid">
+			<div class="span12">
+				<p>
+					<h6><%= time_ago_in_words answer.created_at%> ago | <%= answer.comments.length%> commenti</h6>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+<% end %> 

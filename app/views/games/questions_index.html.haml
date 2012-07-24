@@ -1,0 +1,25 @@
+%p
+  .download-info
+    = link_to 'Aggiungi domanda', new_question_path, :class=>"btn btn-primary btn-large"
+%hr/
+%h2 Domande effettuate
+- @questions.each do |question|
+  %hr/
+  .wel
+    .row-fluid
+      .span4
+        = image_tag("avatar.jpg")
+      .span8
+        %h4 Massimo Donati
+        Sviluppatore iOS
+        %p
+          %b Title:
+          = link_to question.title, question
+        %b Detail:
+        = question.detail
+    .row-fluid
+      .span12
+        %p
+        %h6
+          = time_ago_in_words question.created_at
+          ago | #{link_to "#{question.answers.length} Risposte",question}
