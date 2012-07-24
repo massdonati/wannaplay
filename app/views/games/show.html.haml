@@ -24,6 +24,12 @@
           %p 
             %b Location:
             = @game.location
+          %p 
+            %b Max Players:
+            = @game.allowed_number_of_players
+          %p 
+            %b Price:
+            = "#{@game.price} €"
         #tab2.tab-pane
           %p Howdy, I'm in Section 2.     
   .row-fluid
