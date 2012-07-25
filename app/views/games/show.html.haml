@@ -11,7 +11,17 @@
         %li.active
           %a{"data-toggle" => "tab", :href => "#tab1"} Details
         %li
-          %a{"data-toggle" => "tab", :href => "#tab2"} Players
+          %a{"data-toggle" => "tab", :href => "#tab2"}
+            - case @game.players.count
+              - when 0..6
+                = "Players"
+                %span.badge.badge-important= @game.players.count
+              - when 7..9
+                = "Players"
+                %span.badge.badge-warning= @game.players.count
+              - when 10
+                = "Players"
+                %span.badge.badge-success= @game.players.count 
       .tab-content
         #tab1.tab-pane.active
           %h3 Details 
@@ -31,7 +41,15 @@
             %b Price:
             = "#{@game.price} €"
         #tab2.tab-pane
-          %p Howdy, I'm in Section 2.     
+          .span4
+            %table.table
+              %tbody
+                - @game.players.each_with_index do |player, index|
+                  %tr
+                    %th= index + 1
+                    %th= player.name
+          .span4 
+            =render :partial => "players/form"
   .row-fluid
     .span12
       %p
