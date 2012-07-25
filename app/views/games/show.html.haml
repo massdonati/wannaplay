@@ -22,40 +22,41 @@
               - when 10
                 = "Players"
                 %span.badge.badge-success= @game.players.count 
-      .tab-content
-        #tab1.tab-pane.active
-          %h3 Details 
-          %p
-            %b Sport:
-            = @game.sport
-          %p
-            %b Date:
-            = @game.date
-          %p 
-            %b Location:
-            = @game.location
-          %p 
-            %b Max Players:
-            = @game.allowed_number_of_players
-          %p 
-            %b Price:
-            = "#{@game.price} €"
-        #tab2.tab-pane
-          .span4
-            %table.table
-              %tbody
-                - @game.players.each_with_index do |player, index|
-                  %tr
-                    %th= index + 1
-                    %th= player.name
-          .span4 
-            =render :partial => "players/form"
-  .row-fluid
-    .span12
-      %p
-      %h6
-        = time_ago_in_words @game.created_at
-        ago | #{@game.comments.length} comments
+    .tab-content
+      #tab1.tab-pane.active
+        %h3 Details 
+        %p
+          %b Sport:
+          = @game.sport
+        %p
+          %b Date:
+          = @game.date
+        %p 
+          %b Location:
+          = @game.location
+        %p 
+          %b Max Players:
+          = @game.allowed_number_of_players
+        %p 
+          %b Price:
+          = "#{@game.price} €"
+        .row-fluid
+          .span3
+            %p
+              %h6
+                = "#{time_ago_in_words @game.created_at} ago | #{@game.comments.length} comments"
+      #tab2.tab-pane
+        .span4
+          %table.table
+            %tbody
+              - @game.players.each_with_index do |player, index|
+                %tr
+                  %th= index + 1
+                  %th= player.name.capitalize
+                  %th
+                    %button.btn.btn-mini= link_to "<i class=\"icon-remove\"></i>".html_safe, player, confirm: "Are you sure you want to remove #{player.name}?", method: :delete
+        .span4 
+          =render :partial => "players/form"
 #accordion2.accordion
   .accordion-group
     .accordion-heading
