@@ -9,5 +9,6 @@ class Player
   has_and_belongs_to_many :game
 
   validates_presence_of :name
+  
 
 end

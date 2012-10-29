@@ -14,7 +14,10 @@ class Game
   has_many :comments, :as => :commentable 
   
   validates_numericality_of :allowed_number_of_players, :greater_than => 0
-
+  
+  def validate!
+    errors.add(:players, "Too many players for this game") if players.count > allowed_number_of_players
+  end
 
 
 end

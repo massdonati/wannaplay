@@ -54,7 +54,7 @@
                   %th= index + 1
                   %th= player.name.capitalize
                   %th
-                    %button.btn.btn-mini= link_to "<i class=\"icon-remove\"></i>".html_safe, player, confirm: "Are you sure you want to remove #{player.name}?", method: :delete
+                    %button.btn.btn-mini= link_to "<i class=\"icon-remove\"></i>".html_safe, {player: player, game: @game}, confirm: "Are you sure you want to remove #{player.name}?", method: :delete
         .span4 
           =render :partial => "players/form"
 #accordion2.accordion
