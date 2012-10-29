@@ -46,7 +46,7 @@
               %h6
                 = "#{time_ago_in_words @game.created_at} ago | #{@game.comments.length} comments"
       #tab2.tab-pane
-        .span4
+        .span8
           %table.table
             %tbody
               - @game.players.each_with_index do |player, index|
@@ -55,8 +55,9 @@
                   %th= player.name.capitalize
                   %th
                     %button.btn.btn-mini= link_to "<i class=\"icon-remove\"></i>".html_safe, {player: player, game: @game}, confirm: "Are you sure you want to remove #{player.name}?", method: :delete
-        .span4 
-          =render :partial => "players/form"
+        .span4
+          - if !@game.enough_players
+            =render :partial => "players/form"
 #accordion2.accordion
   .accordion-group
     .accordion-heading

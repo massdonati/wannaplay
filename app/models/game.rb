@@ -19,5 +19,8 @@ class Game
     errors.add(:players, "Too many players for this game") if players.count > allowed_number_of_players
   end
 
+  def enough_players
+   self.allowed_number_of_players <= self.players.count
+  end
 
 end
