@@ -50,15 +50,27 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
-    @game.destroy
 
-    respond_to do |format|
-      format.html { redirect_to games_url }
-      format.json { head :no_content }
+    if params[:player]
+      puts "********************************************************************************************
+      params contiene il player
+      **************************************************************************************************"
+      @game = Game.find(params[:id])
+      @player = Player.find(params[:player])
+      @game.players.delete(@player)
+
+      respond_to do |format|
+        format.html { redirect_to @game, notice: "#{@player.name} was successfully deleted." }
+      end
+    else
+    
+      @game = Game.find(params[:id])
+      @game.destroy
+
+      respond_to do |format|
+        format.html { redirect_to games_url }
+        format.json { head :no_content }
+      end
     end
   end
-
-
-
 end
