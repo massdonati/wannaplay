@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '1.9.3'
 gem 'rails', '3.2.8'
 gem 'mongoid'
 gem 'bootstrap-sass'
@@ -9,6 +10,7 @@ gem 'factory_girl_rails', :group => :test
 gem 'mongoid-rspec', :group => :test
 gem 'bson_ext'
 gem 'haml-rails'
+gem 'heroku'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -28,6 +30,12 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+end
+
+group :production do
+
+  gem 'thin'
+    
 end
 
 gem 'jquery-rails'
