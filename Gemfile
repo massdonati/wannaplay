@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 gem 'mongoid'
 gem 'bootstrap-sass'
 gem 'rspec-rails', :group => [:development, :test]
