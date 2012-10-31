@@ -10,7 +10,6 @@ gem 'factory_girl_rails', :group => :test
 gem 'mongoid-rspec', :group => :test
 gem 'bson_ext'
 gem 'haml-rails'
-gem 'heroku'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
