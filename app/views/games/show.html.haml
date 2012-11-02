@@ -30,7 +30,9 @@
           = @game.sport
         %p
           %b Date:
-          = @game.date
+          = @game.date.strftime("%d %b %y")
+          %b Time:
+          21:30
         %p 
           %b Location:
           = @game.location.capitalize
