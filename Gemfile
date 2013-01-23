@@ -16,6 +16,8 @@ gem 'haml-rails'
 group :development do
   gem 'hpricot'
   gem 'ruby_parser'
+  # To use debugger
+ gem 'debugger'
 end
 
 
@@ -32,11 +34,11 @@ group :assets do
 end
 
 group :production do
-
   gem 'thin'
     
 end
 
+gem 'date_validator'
 gem 'jquery-rails'
 gem "bootstrap-datepicker-rails", "~> 0.6.37"
 gem 'simple_form'
@@ -53,5 +55,4 @@ gem 'simple_form'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
+

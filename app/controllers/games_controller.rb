@@ -5,14 +5,22 @@ class GamesController < ApplicationController
     respond_with @games
   end
 
+
+  def new
+    @game = Game.new
+
+  end
+
   def create
     @game = Game.new(params[:game])
 
-    if @game.save
-      respond_with @game
-    else
-      respond_with @game.errors
-    end
+      if @game.save
+         redirect_to @game, notice: 'Game was successfully created.'
+        
+      else
+         render action: "new"
+        
+      end
     
   end
 
@@ -27,19 +35,14 @@ class GamesController < ApplicationController
 
     respond_to do |format|
       if @game.update_attributes(params[:game])
-        format.html { redirect_to @game, notice: 'Game was successfully updated.'}
+        format.html { redirect_to @game, :notice => 'Game was successfully updated.'}
         format.json { head :no_content }
         
       else
-        format.html { render action: "edit" }
-        format.json { render json: @game.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @game.errors, :status => :unprocessable_entity }
       end
     end
-  end
-
-  def new
-    @game = Game.new
-    
   end
 
   def show
@@ -52,15 +55,12 @@ class GamesController < ApplicationController
   def destroy
 
     if params[:player]
-      puts "********************************************************************************************
-      params contiene il player
-      **************************************************************************************************"
       @game = Game.find(params[:id])
       @player = Player.find(params[:player])
       @game.players.delete(@player)
 
       respond_to do |format|
-        format.html { redirect_to @game, notice: "#{@player.name} was successfully deleted." }
+        format.html { redirect_to @game, :notice => "#{@player.name} was successfully deleted." }
       end
     else
     
