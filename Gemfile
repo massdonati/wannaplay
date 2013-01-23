@@ -38,6 +38,7 @@ group :production do
 end
 
 gem 'jquery-rails'
+gem "bootstrap-datepicker-rails", "~> 0.6.37"
 gem 'simple_form'
 
 # To use ActiveModel has_secure_password

@@ -8,7 +8,7 @@
           %li= msg
 = simple_form_for @game, :html => { :class => 'well' } do |f|
   = f.input :sport, :input_html => { :class => 'span4', :placeholder => "Write the sport you wanna play"}
-  = f.input :date, :input_html => { :type=>'datetime'}
+  = f.input :date, :input_html => { :class => "span2", :size => "16", :"data-behaviour" => "datepicker", :type => "text"}
   = f.input :location, :input_html => { :class => 'span4', :placeholder => "Write the location"}
   = f.input :allowed_number_of_players, :input_html => {:class => "span1"}
   .control-group
@@ -18,4 +18,4 @@
           = f.input_field :price, :input_html => {:class => "span2", :size => "10", :type => "text"}
           %span.add-on .00
   .download-info
-    = f.button :submit, :class => "btn btn-small", :value => 'Submit new challenge'
+    = f.button :submit, :class => "btn btn-success", :value => 'Aggiungi Partita'

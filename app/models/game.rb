@@ -2,9 +2,9 @@ class Game
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  field :sport, :type => String
-  field :date, :type => DateTime
-  field :location, :type => String
+  field :sport, :type => String, :default => "Calcetto a 5"
+  field :date, :type => Date
+  field :location, :type => String, :default => "Zambon"
   field :price, :type => Integer
   field :allowed_number_of_players, :type => Integer, :default => 10
 
@@ -14,7 +14,7 @@ class Game
   has_many :comments, :as => :commentable 
   
   validates_numericality_of :allowed_number_of_players, :greater_than => 0
-  
+
   def validate!
     errors.add(:players, "Too many players for this game") if players.count > allowed_number_of_players
   end
