@@ -38,6 +38,7 @@ group :production do
     
 end
 
+gem 'devise'
 gem 'date_validator'
 gem 'jquery-rails'
 gem "bootstrap-datepicker-rails", "~> 0.6.37"

@@ -4,16 +4,17 @@ class Game
   
   attr_accessible :sport, :date, :location, :price
   
-  field :sport, :type => String#, :default => "Calcetto a 5"
+  field :sport, :type => String
   field :date, :type => Date
-  field :location, :type => String#, :default => "Zambon"
-  field :price, :type => Integer
+  field :location, :type => String
+  field :price, :type => Integer, :default => 0
   field :allowed_number_of_players, :type => Integer, :default => 10
-
+  field :time, :type => String, :default => "Da stabilirsi"
   
 
   has_and_belongs_to_many :players
-  has_many :comments, :as => :commentable 
+  has_many :comments, :as => :commentable
+  belongs_to :user
   
   validates_numericality_of :allowed_number_of_players, :greater_than => 0
   validates_presence_of :sport, :message => "Non deve essere vuoto"

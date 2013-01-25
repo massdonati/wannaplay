@@ -1,11 +1,12 @@
 .row-fluid
   .span4
-    = image_tag("center_ball.jpg")
-    
+    = image_tag("newstv.jpg")
+
     .btn-group
-      %button.btn= link_to 'Edit Details', edit_game_path(@game)
-      %button.btn= link_to 'Delete Game', @game, confirm: 'Are you sure you want to delete this game?', method: :delete
-  .span8 
+      =if current_user.email == @game.user.email
+        %button.btn= link_to 'Modifica appuntamento', edit_game_path(@game)
+        %button.btn= link_to 'Elimina appuntamento', @game, confirm: 'Sei sicuro di voler eliminare questo Appuntamento?', method: :delete
+  .span8
     .tabbable
       %ul.nav.nav-tabs
         %li.active
@@ -24,23 +25,26 @@
                 %span.badge.badge-success= @game.players.count 
     .tab-content
       #tab1.tab-pane.active
-        %h3 Details 
+        %h3 Dettagli
+        %p
+          %b Creatore:
+          = @game.user.email
         %p
           %b Sport:
           = @game.sport
         %p
-          %b Date:
+          %b Data:
           = @game.date.strftime("%d %b %y")
-          %b Time:
-          21:30
+          %b Orario:
+          = @game.time
         %p 
           %b Location:
           = @game.location.capitalize
         %p 
-          %b Max Players:
+          %b Max Giocatori:
           = @game.allowed_number_of_players
         %p 
-          %b Price:
+          %b Prezzo:
           = "#{@game.price} €"
         .row-fluid
           .span3

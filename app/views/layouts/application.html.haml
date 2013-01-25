@@ -20,14 +20,16 @@
           %td= link_to 'WannaPlay', games_path, :class => 'brand'
           .nav-collapse
             %ul.nav
-              %li
-                %a{:href => "#"} Login
-              %li
-                %a{:href => "#"} Registrati
-              %li
-                %a{:href => "#"} Recupera Password
-              %li
-                %a{:href => "#"} Aiuto
+              - if user_signed_in?
+                %li
+                  = link_to current_user.email
+                %li
+                  = link_to('Esci', destroy_user_session_path, :method => :delete)
+              - else
+                %li
+                  = link_to('Connettiti', new_user_session_path)
+                %li
+                  = link_to('Registrati', new_user_registration_path)
     - if flash[:alert]
       .row-fluid
         #alert.alert.alert-block

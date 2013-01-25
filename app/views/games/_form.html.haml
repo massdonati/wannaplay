@@ -13,6 +13,7 @@
     = f.input_field :date, :class => "span4", :size => "16", :"data-behaviour" => "datepicker", :type => "text", :placeholder => "Clicca per visualizzare il calendario"
     %span.add-on
       %i.icon-calendar
+  = f.input :time, :input_html => {:class => "span1"}
   = f.input :location, :input_html => { :class => 'span4', :placeholder => "Write the location"}
   = f.input :allowed_number_of_players, :input_html => {:class => "span1"}
   = f.input :price, :wrapper => :append do
