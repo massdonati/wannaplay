@@ -39,5 +39,6 @@ class User
   # field :authentication_token, :type => String
 
   has_many :games
+  has_many :comments
 
 end

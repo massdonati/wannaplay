@@ -75,6 +75,9 @@
   - @game.comments.desc(:created_at).each do |comment|
     .well
       %p
+      %h5.label.label-info= comment.user.email
+      %p
       = comment.content
       %p
       %h6= comment.created_at
+

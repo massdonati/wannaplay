@@ -35,6 +35,7 @@ class CommentsController < ApplicationController
 
     @commentable = find_commentable
     @comment = @commentable.comments.create(params[:comment])
+    @comment.user = current_user
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @commentable, notice: 'Comment was successfully created.' }
