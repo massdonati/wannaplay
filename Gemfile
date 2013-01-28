@@ -17,7 +17,10 @@ group :development do
   gem 'hpricot'
   gem 'ruby_parser'
   # To use debugger
- gem 'debugger'
+  gem 'debugger'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 
