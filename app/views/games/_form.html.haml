@@ -8,13 +8,13 @@
           %li= msg
 = simple_form_for @game, :html => { :class => 'well' } do |f|
 
-  = f.input :sport, :input_html => { :class => 'span4', :placeholder => "Write the sport you wanna play"}
+  = f.input :sport, :input_html => { :class => 'span4', :placeholder => "Scrivi il tipo di sport"}
   = f.input :date, :wrapper => :append do
     = f.input_field :date, :class => "span4", :size => "16", :"data-behaviour" => "datepicker", :type => "text", :placeholder => "Clicca per visualizzare il calendario"
     %span.add-on
       %i.icon-calendar
-  = f.input :time, :input_html => {:class => "span1"}
-  = f.input :location, :input_html => { :class => 'span4', :placeholder => "Write the location"}
+  = f.input :time, :input_html => {:class => "span1", :placeholder => "Ora?"}
+  = f.input :location, :input_html => { :class => 'span4', :placeholder => "Scrivi il luogo"}
   = f.input :allowed_number_of_players, :input_html => {:class => "span1"}
   = f.input :price, :wrapper => :append do
     = f.input_field :price, :class => "span4", :size => "16", :type => "text"

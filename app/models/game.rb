@@ -9,7 +9,7 @@ class Game
   field :location, :type => String
   field :price, :type => Integer, :default => 0
   field :allowed_number_of_players, :type => Integer, :default => 10
-  field :time, :type => String, :default => "Da stabilirsi"
+  field :time, :type => String
   
 
   has_and_belongs_to_many :players
