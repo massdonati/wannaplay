@@ -22,7 +22,12 @@
             %ul.nav
               - if user_signed_in?
                 %li
-                  = link_to current_user.email
+                  -if current_user.username
+                    = link_to current_user.username
+                  -else
+                    = link_to current_user.email
+                %li
+                  = link_to('Impostazioni', edit_user_registration_path)
                 %li
                   = link_to('Esci', destroy_user_session_path, :method => :delete)
               - else

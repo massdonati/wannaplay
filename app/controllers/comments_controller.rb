@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new
     
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render json: @comment }
     end
   end

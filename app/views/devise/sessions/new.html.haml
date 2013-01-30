@@ -1,0 +1,11 @@
+.span4.offset4
+  %h2 Accedi a WannaPlay
+.span4.offset4
+  = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+    .well
+      = f.input :email, :required => false, :autofocus => true
+      = f.input :password, :required => false
+      = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+      = f.button :submit, "Sign in"
+
+    = render "devise/shared/links"
