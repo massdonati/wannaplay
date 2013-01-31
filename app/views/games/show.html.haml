@@ -82,3 +82,5 @@
         = comment.content
       %p
         %h6= comment.created_at
+        -if current_user.email == comment.user.email
+          =link_to 'Elimina commento', {:controller => "comments", :action => 'destroy', :game_id => @game.id, comment: comment}, :confirm => "Sei sicuro di voler eliminare questo Commento?", method: :delete
