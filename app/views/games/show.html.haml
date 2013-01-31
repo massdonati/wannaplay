@@ -1,7 +1,6 @@
 .row-fluid
   .span4
     = image_tag("newstv.jpg")
-
     .btn-group
       =if current_user.email == @game.user.email
         %button.btn= link_to 'Modifica appuntamento', edit_game_path(@game)
@@ -28,7 +27,10 @@
         %h3 Dettagli
         %p
           %b Creatore:
-          = @game.user.email
+          -if !@game.user.username
+            = @game.user.email
+          -else
+            =@game.user.username
         %p
           %b Sport:
           = @game.sport
@@ -75,9 +77,9 @@
   - @game.comments.desc(:created_at).each do |comment|
     .well
       %p
-      %span.h3.label.label-info= comment.user.email
+        %span.h3.label.label-info= comment.user.username ? comment.user.username : comment.user.email
       %p
-      = comment.content
+        = comment.content
       %p
-      %h6= comment.created_at
+        %h6= comment.created_at
 
