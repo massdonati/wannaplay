@@ -52,10 +52,12 @@
     = javascript_include_tag "application"
     :javascript
       $("[data-behaviour~='datepicker']").datepicker({
-        "format": "dd-mm-yyyy",
-        "weekStart": 1,
-        "autoclose": true,
-        "language" : 'it'
+        "format"         : "dd MM yyyy",
+        "todayHighlight" : true,
+        "todayBtn"       : true,
+        "weekStart"      : 1,
+        "autoclose"      : true,
+        "language"       : 'it'
       });
     = javascript_include_tag "application"
     :javascript

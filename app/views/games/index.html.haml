@@ -27,6 +27,6 @@
             - when 10
               %span.badge.badge-success= game.players.count
           %th= game.sport
-          %th= game.date.strftime("%d %b %y")
+          %th= game.date.strftime("%d %B %Y")
           %th= game.location
           %th= link_to 'Info', game, :class=>"btn btn-info"
