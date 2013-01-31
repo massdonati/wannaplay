@@ -9,6 +9,7 @@
       %thead
         %tr
           %th #
+          %th Admin
           %th Players
           %th Sport
           %th Date
@@ -17,7 +18,8 @@
       %tbody
       - @games.desc(:created_at).each_with_index do |game, index|
         %tr
-          %th= index + 1 
+          %th= index + 1
+          %th= game.user.username
           %th
             - case game.players.count
             - when 0..6
