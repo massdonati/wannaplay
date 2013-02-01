@@ -2,7 +2,7 @@ class Game
   include Mongoid::Document
   include Mongoid::Timestamps
   
-  attr_accessible :sport, :date, :location, :price
+  attr_accessible :sport, :date, :location, :price, :time, :allowed_number_of_players
   
   field :sport, :type => String
   field :date, :type => Date
