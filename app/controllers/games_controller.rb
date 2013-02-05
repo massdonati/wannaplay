@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   before_filter :authenticate_user!
-
   respond_to :html
+  
   def index
     @games = Game.all
     respond_with @games
@@ -18,18 +18,13 @@ class GamesController < ApplicationController
     @game.user = current_user
       if @game.save
          redirect_to @game, notice: 'Game was successfully created.'
-        
       else
          render action: "new"
-        
       end
-    
   end
 
   def edit
-
     @game = Game.find(params[:id])
-    
   end
 
   def update

@@ -1,7 +1,7 @@
 require "spec_helper"
 
 describe GamesController do
-
+  include Devise::TestHelpers
   describe "Games#index" do
     
     xit "should get all the games" do
@@ -14,11 +14,13 @@ describe GamesController do
       valid_attributes = {
         :sport => "calcetto a 5",
         :date => Date.tomorrow,
-        :location => "Zambon"
+        :location => "Zambon",
+        :time => "21:30"
       }
 
       post :create, :game => valid_attributes
-      assigns(:game).should be_a Game
+      
+      assigns(:game).should redirect_to(:game)
       assigns(:game).should be_persisted
     end
 
