@@ -41,7 +41,7 @@ group :production do
     
 end
 
-
+gem 'rails_admin'
 gem 'devise'
 gem 'date_validator'
 gem 'jquery-rails'

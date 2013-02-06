@@ -16,7 +16,6 @@ describe CommentsController do
     end
   end
   
-  describe ""
   describe "GET edit" do
     xit "assigns the requested comment as @comment" do
       comment = Comment.create! valid_attributes

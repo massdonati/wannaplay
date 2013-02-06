@@ -2,7 +2,7 @@
   .span4
     = image_tag("newstv.jpg")
     .btn-group
-      =if current_user.email == @game.user.email
+      -if current_user.email == @game.user.email
         %button.btn= link_to 'Modifica appuntamento', edit_game_path(@game)
         %button.btn= link_to 'Elimina appuntamento', @game, confirm: 'Sei sicuro di voler eliminare questo Appuntamento?', method: :delete
   .span8
