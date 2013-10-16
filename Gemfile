@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.8'
+gem 'rails'
 gem 'mongoid'
 gem 'bootstrap-sass'
 gem 'rspec-rails', :group => [:development, :test]
@@ -18,7 +18,7 @@ group :development do
   # To use debugger
   gem 'debugger'
   gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'binding_of_caller', '~> 0.7.1'
   gem 'meta_request'
 end
 

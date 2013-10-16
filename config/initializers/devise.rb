@@ -81,6 +81,7 @@ Devise.setup do |config|
   # a value less than 10 in other environments.
   config.stretches = Rails.env.test? ? 1 : 10
 
+  config.secret_key = 'c03a9cdd13251615d15688155b41b7d1fb912293830d47284e2f8752e2102c7f2d1ebe1cc935383c10a430e140f6f6170a32e06fe66e9c6caceba71fbe1aa352'
   # Setup a pepper to generate the encrypted password.
   # config.pepper = "4be0ca6c7779b89c32bc42ec38016d3ad098a7b61595960348784b492fcc0ac169bc9ab969deff955e0f8b0fa3b65c9f13b001a88168c87a3294d63ba32162a8"
 
