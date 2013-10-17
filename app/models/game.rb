@@ -17,8 +17,8 @@ class Game
   belongs_to :user
   
   validates_numericality_of :allowed_number_of_players, :greater_than => 0
-  validates_presence_of :sport, :message => "Non deve essere vuoto"
-  validates_presence_of :date, :message => "Non deve essere vuoto"
+  validates_presence_of :sport
+  validates_presence_of :date
   
   def validate!
     errors.add(:players, "Too many players for this game") if players.count > allowed_number_of_players

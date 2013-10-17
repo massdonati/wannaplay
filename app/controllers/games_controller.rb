@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   respond_to :html
   
   def index
-    @games = Game.all
+    @games = Game.all.partition {|g| g.user == current_user or g.players.include? current_user}.first
     respond_with @games
   end
 
